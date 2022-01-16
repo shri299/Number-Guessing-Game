@@ -28,8 +28,18 @@ guessBtn.addEventListener('click',function (e) {
         guessInput.style.borderColor = 'green';
         //display message
         setMessage('wohoo you wonn!!! Click to play again','green');
-        //change to play again button
-        guessBtn.value = 'Play Again';
+    }
+    //wrong answer
+    guessesLeft -= 1;
+    if (guessesLeft === 0) {
+        setMessage('Guesses over you lost!','red');
+        guessInput.disabled = true;
+        guessInput.style.borderColor = 'red';
+    }
+    else{
+        setMessage(`${guessesLeft} Chances left!`, 'red');
+        guessInput.value = "";
+        guessInput.style.borderColor = 'red';
     }
     e.preventDefault();
 })
@@ -38,3 +48,4 @@ function setMessage(msg,color) {
     message.style.color = color;
     message.textContent = msg;
 }
+
